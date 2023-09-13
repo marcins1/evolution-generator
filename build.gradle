@@ -1,5 +1,7 @@
 plugins {
+    id 'application'
     id 'java'
+    id 'org.openjfx.javafxplugin' version '0.0.13'
 }
 
 group 'org.example'
@@ -12,6 +14,21 @@ repositories {
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+javafx {
+    version = "17"
+    modules = [ 'javafx.controls' ]
+}
+
+application {
+    getMainClass().set('generator.Main')
+}
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(19))
+    }
 }
 
 test {
